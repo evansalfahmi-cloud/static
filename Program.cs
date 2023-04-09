@@ -48,47 +48,75 @@ alasan
 kita yakin bahwa kelas terseut tidak akan pernah diinstansiasi
 semua anggota kelas bersifat statis
 
+====================
+KELAS DI DALAM KELAS
+====================
+
+Kelas bagian dalam akan mengenali semua data maupun metode yang di deklarasikan di dalam kelas bagian luar, meskipun private
+tapi metode tipe akses private yang di deklarasikan di kelas bagian dalam tidak bisa diakses atau dikenal oleh kelas bagian luar
+
+
 Contoh
 
 */
 
-using System ; 
+using System;
 
-//mendefinisikan  kelas statis
-static class Generator {
-    private static int id;
+//KELAS BAGIAN LUAR
+class persegiPanjang {
+    private double panjang;
+    private double lebar;
 
-    static Generator(){
-        id = -1;
+    //konstruktor kelas bagian luar
+    public persegiPanjang(double panjang, double lebar){
+        this.panjang = panjang;
+        this.lebar = lebar;
     }
 
-    public static int lanjutHitung (){
-        return ++id;
+    public void tampilData (){
+        Console.WriteLine ("Panjang = "+ panjang);
+        Console.WriteLine ("Lebar   = "+ lebar);
+    } 
+
+    // metode untuk menghasilkan objek persagipanjang berwarna
+    public persegiPanjangBerwarna Salin (string warna){
+        persegiPanjangBerwarna temp = new persegiPanjangBerwarna(this, warna);
+        return temp;
     }
 
-    public static void Reset (){
-        id = -1;
+    //KELAS BAGIAN DALAM
+    public class persegiPanjangBerwarna {
+        private persegiPanjang obj;
+        private string warna;
+
+        //konstruktor bagian kelas dalam
+        public persegiPanjangBerwarna (persegiPanjang obj, string warna){
+            this.obj = obj;
+            this.warna = warna;
+        }
+
+        //mengubah sifat dari tampilData pada kelas persegi panjang
+        public void tampilData(){
+            //memanggil persegipanjang.tampildata
+            obj.tampilData();
+            //menampbah sifat baru
+            Console.WriteLine("Warna   = "+ warna);
+        }
     }
-}
+    //akhir kelas dalam
+} // akhir kelas luar
 
-class demoKelasSatis{
-    static void Main (){
-    
-    //pemanggilan next pertama
-    //akan menyebabkan konstruktor statis dipanggil
-    int gen;
-    gen = Generator.lanjutHitung();
-    Console.Write("pemanggilan lanjut hitung pertama : ");
-    Console.WriteLine(gen);
+class demoKelasBersarang
+{
+    static void Main(){
+        //membuat objek dari kelas bagian luar
+        Console.WriteLine ("Objek Persegi Panjang");
+        persegiPanjang perPjg1 = new persegiPanjang (9,8);
+        perPjg1.tampilData();
 
-    
-    gen = Generator.lanjutHitung();
-    Console.Write("pemanggilan lanjut hitung kedua   : ");
-    Console.WriteLine(gen);
-
-   
-    gen = Generator.lanjutHitung();
-    Console.Write("pemanggilan lanjut hitung ketiga  : ");
-    Console.WriteLine(gen);
+        //membuat objek dari kelas bagian dalam
+        Console.WriteLine("\nObjek Persegi Panjang Berwarna");
+        persegiPanjang.persegiPanjangBerwarna perPjg2 = perPjg1.Salin ("mearah");
+        perPjg2.tampilData();
     }
 }

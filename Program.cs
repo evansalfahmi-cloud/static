@@ -38,54 +38,57 @@ class namaKelas {
         //kode konstruktor statis
     }
 }
-CONTOH
+
+==========
+KELAS STATIS
+=========
+
+dallam c#, kelas jg dapat dideklarasikan sifat statis
+alasan
+kita yakin bahwa kelas terseut tidak akan pernah diinstansiasi
+semua anggota kelas bersifat statis
+
+Contoh
+
 */
 
-using System ;
-class Contoh {
-    //data statis
-    public static int a;
+using System ; 
 
-    //data non-statis
-    public int b;
+//mendefinisikan  kelas statis
+static class Generator {
+    private static int id;
 
-    //konstruktor statis
-    static Contoh(){
-        a = 10;
-        Console.WriteLine ("Konstruktor statis dipanggil");
+    static Generator(){
+        id = -1;
     }
 
-    //konstruktor non statis
-    public Contoh (int b){
-        this.b = b;
-        Console.WriteLine("Konstruktor Normal dipanggil");
+    public static int lanjutHitung (){
+        return ++id;
+    }
 
+    public static void Reset (){
+        id = -1;
     }
 }
 
-class demoKonkstruktorStatis1{
+class demoKelasSatis{
     static void Main (){
-        //mengaksses data statis a
-        //akan menyebabkan konstruktor statis dipanggil
-        Console.WriteLine("contoh.a = "+ Contoh.a);
-        Console.WriteLine();
+    
+    //pemanggilan next pertama
+    //akan menyebabkan konstruktor statis dipanggil
+    int gen;
+    gen = Generator.lanjutHitung();
+    Console.Write("pemanggilan lanjut hitung pertama : ");
+    Console.WriteLine(gen);
 
-        //buat objek pertama
-        //akan menyebabkan konstruktor normal dipanggil
-        Contoh obj1 = new Contoh(1000);
-        Console.WriteLine("obj1.b = "+ obj1.b);
-        Console.WriteLine();
+    
+    gen = Generator.lanjutHitung();
+    Console.Write("pemanggilan lanjut hitung kedua   : ");
+    Console.WriteLine(gen);
 
-        //buat objek kedua
-        //akan menyebabkan konstruktor normal dipanggil
-        Contoh obj2 = new Contoh(1500);
-        Console.WriteLine("obj2.b = "+ obj2.b);
-        Console.WriteLine();
-
-        //buat objek ketiga
-        //akan menyebabkan konstruktor normal dipanggil
-        Contoh obj3 = new Contoh(1500);
-        Console.WriteLine("obj3.b = "+ obj3.b);
-        Console.WriteLine();
+   
+    gen = Generator.lanjutHitung();
+    Console.Write("pemanggilan lanjut hitung ketiga  : ");
+    Console.WriteLine(gen);
     }
 }

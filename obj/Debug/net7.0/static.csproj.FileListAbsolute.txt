@@ -1,0 +1,15 @@
+C:\Users\MuhammadZafran\Desktop\static\bin\Debug\net7.0\static.exe
+C:\Users\MuhammadZafran\Desktop\static\bin\Debug\net7.0\static.deps.json
+C:\Users\MuhammadZafran\Desktop\static\bin\Debug\net7.0\static.runtimeconfig.json
+C:\Users\MuhammadZafran\Desktop\static\bin\Debug\net7.0\static.dll
+C:\Users\MuhammadZafran\Desktop\static\bin\Debug\net7.0\static.pdb
+C:\Users\MuhammadZafran\Desktop\static\obj\Debug\net7.0\static.csproj.AssemblyReference.cache
+C:\Users\MuhammadZafran\Desktop\static\obj\Debug\net7.0\static.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MuhammadZafran\Desktop\static\obj\Debug\net7.0\static.AssemblyInfoInputs.cache
+C:\Users\MuhammadZafran\Desktop\static\obj\Debug\net7.0\static.AssemblyInfo.cs
+C:\Users\MuhammadZafran\Desktop\static\obj\Debug\net7.0\static.csproj.CoreCompileInputs.cache
+C:\Users\MuhammadZafran\Desktop\static\obj\Debug\net7.0\static.dll
+C:\Users\MuhammadZafran\Desktop\static\obj\Debug\net7.0\refint\static.dll
+C:\Users\MuhammadZafran\Desktop\static\obj\Debug\net7.0\static.pdb
+C:\Users\MuhammadZafran\Desktop\static\obj\Debug\net7.0\static.genruntimeconfig.cache
+C:\Users\MuhammadZafran\Desktop\static\obj\Debug\net7.0\ref\static.dll

@@ -15,37 +15,77 @@ batasan
 metode statis hanya dapat memanggil metode lain yang bersifat statis
 metode statis hanya dapat mengakses data yang bersifat statis
 metode statsi tidak dapat diacu melalui referensi this
+
+Konstruktor statis
+dalam c# konstruktor dapat bersifat statis seperti layaknya metode
+Konstruktor statis pada umumnya digunakan untuk melakukan inisialisasi terhadap data statis
+misal untuk memuat nilai kongfigurasi program dari suatu file
+maupun untuk melakukan tugas lain sesuai dengan kebutuhan program
+perbedaan konstruktor statis dengan normal
+adalah terletak pada proses pemanggilannnya
+
+konstruktor statis akan dipanggil secara otomatis oleh CLR.NET (.NET RUNTIME) pada saat pertama kali kelas 
+tersebut digunakan, sebelum konstruktor normal dipanggil
+
+konstruktor statis tidak memiliki tipe ases pada proses pedefinisiann 
+sehingga kita tidak dapat memanggilnya secara eksplisit melalui program
+
+bentuk umum
+
+class namaKelas {
+    //konstruktor statis
+    static namaKelas(){
+        //kode konstruktor statis
+    }
+}
+CONTOH
 */
 
-using System ; 
-class Generator {
+using System ;
+class Contoh {
     //data statis
-    private static int id = 0 ;
-    //metode statis
-    public static int hitungID(){
-        return ++id;
+    public static int a;
+
+    //data non-statis
+    public int b;
+
+    //konstruktor statis
+    static Contoh(){
+        a = 10;
+        Console.WriteLine ("Konstruktor statis dipanggil");
+    }
+
+    //konstruktor non statis
+    public Contoh (int b){
+        this.b = b;
+        Console.WriteLine("Konstruktor Normal dipanggil");
+
     }
 }
 
-class demoStatis2 {
+class demoKonkstruktorStatis1{
     static void Main (){
-        string idBarang = "BRG-";
-        int gen;
+        //mengaksses data statis a
+        //akan menyebabkan konstruktor statis dipanggil
+        Console.WriteLine("contoh.a = "+ Contoh.a);
+        Console.WriteLine();
 
-        //pemanggilan hitung iD
-        gen = Generator.hitungID ();
-        Console.Write(idBarang + gen);
-        Console.WriteLine (": Televisi");
+        //buat objek pertama
+        //akan menyebabkan konstruktor normal dipanggil
+        Contoh obj1 = new Contoh(1000);
+        Console.WriteLine("obj1.b = "+ obj1.b);
+        Console.WriteLine();
 
-        //pemanggilan hitungID 2
-        gen = Generator.hitungID ();
-        Console.Write(idBarang + gen);
-        Console.WriteLine(": Radio");
+        //buat objek kedua
+        //akan menyebabkan konstruktor normal dipanggil
+        Contoh obj2 = new Contoh(1500);
+        Console.WriteLine("obj2.b = "+ obj2.b);
+        Console.WriteLine();
 
-        //pemanggilan hitungID 3
-        gen = Generator.hitungID ();
-        Console.Write (idBarang + gen);
-        Console.WriteLine(": Handphone");
-        
+        //buat objek ketiga
+        //akan menyebabkan konstruktor normal dipanggil
+        Contoh obj3 = new Contoh(1500);
+        Console.WriteLine("obj3.b = "+ obj3.b);
+        Console.WriteLine();
     }
 }

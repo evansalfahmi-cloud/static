@@ -17,49 +17,35 @@ metode statis hanya dapat mengakses data yang bersifat statis
 metode statsi tidak dapat diacu melalui referensi this
 */
 
-using System;
-class persegiPanjang {
-    //class variable
-    private static int hitungIni = 0 ;
-
-    //instance variable
-    private double panjang;
-    private double lebar;
-
-    //konstruktor
-    public persegiPanjang(double p, double l){
-        panjang = p;
-        lebar = l;
-        //menaikan nilai counter
-        hitungIni ++;
-    }
-
-    //instance method
-    private double rumusLuas(){
-        return panjang*lebar;
-    }
-
-    //instance method
-    public void tampilkanLuas (){
-        Console.WriteLine("LUAS = "+rumusLuas());
-    }
-    
-    //class method
-    public static int dapatHitungan (){
-        return hitungIni;
+using System ; 
+class Generator {
+    //data statis
+    private static int id = 0 ;
+    //metode statis
+    public static int hitungID(){
+        return ++id;
     }
 }
 
-class demoStatis {
+class demoStatis2 {
     static void Main (){
-        Console.WriteLine("Jumlah objek awal : "+ persegiPanjang.dapatHitungan());
+        string idBarang = "BRG-";
+        int gen;
 
-        //membuat objek 1,2,3
-        persegiPanjang perPjg1 = new persegiPanjang (4,3);
-        persegiPanjang perPjg2 = new persegiPanjang (5,4);
-        persegiPanjang perPjg3 = new persegiPanjang (7,6);
+        //pemanggilan hitung iD
+        gen = Generator.hitungID ();
+        Console.Write(idBarang + gen);
+        Console.WriteLine (": Televisi");
+
+        //pemanggilan hitungID 2
+        gen = Generator.hitungID ();
+        Console.Write(idBarang + gen);
+        Console.WriteLine(": Radio");
+
+        //pemanggilan hitungID 3
+        gen = Generator.hitungID ();
+        Console.Write (idBarang + gen);
+        Console.WriteLine(": Handphone");
         
-        //menghitungjumlah objek
-        Console.WriteLine("Jumlah objek akhir : "+ persegiPanjang.dapatHitungan());
-        }
+    }
 }
